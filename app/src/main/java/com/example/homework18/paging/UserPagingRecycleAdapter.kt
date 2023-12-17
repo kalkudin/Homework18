@@ -1,6 +1,5 @@
 package com.example.homework18.paging
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -45,7 +44,6 @@ class UserPagingRecycleAdapter : PagingDataAdapter<User, UserPagingRecycleAdapte
                 return oldItem.id == newItem.id
             }
 
-            @SuppressLint("DiffUtilEquals")
             override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
                 return newItem == oldItem
             }

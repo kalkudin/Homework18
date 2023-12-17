@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.*
 
 class SampleFragmentViewModel : ViewModel() {
 
+    //could use a cold flow here instead, but i am more comfortable with using StateFlow it makes more sense to me
     companion object {
         private const val TAG = "SampleFragmentViewModel"
     }
@@ -30,7 +31,6 @@ class SampleFragmentViewModel : ViewModel() {
             pagingSourceFactory = { UserPagingSource() }
         ).flow
             .cachedIn(viewModelScope)
-            .map { pagingData -> pagingData as PagingData<User> }
             .onEach { pagingData ->
                 Log.d(TAG, "Flow emits: $pagingData")
                 _users.value = pagingData
